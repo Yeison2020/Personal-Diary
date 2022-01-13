@@ -1,6 +1,36 @@
 .title-App {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+}
+.btn-container {
+  display: flex;
+  justify-content: center;
+}
+.btn-container > button {
+  background-image: linear-gradient(
+    to right,
+    #77a1d3 0%,
+    #79cbca 51%,
+    #77a1d3 100%
+  );
+
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+
+  padding: 10px 10px 10px 10px;
+  color: black;
+  border-radius: 10px;
+  font-family: "Mochiy Pop P One", sans-serif;
+  font-family: "Sriracha", cursive;
 }
 
 .title-App > h1 {
@@ -9,6 +39,17 @@
   margin-left: auto;
   font-family: "Mochiy Pop P One", sans-serif;
   font-family: "Sriracha", cursive;
+}
+.title-App > p {
+  font-family: "Mochiy Pop P One", sans-serif;
+  font-family: "Sriracha", cursive;
+  margin-top: 5rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.btn-start {
+  padding-right: 0;
 }
 
 .container-image {
@@ -21,4 +62,10 @@
   height: 300px;
   margin-right: auto;
   margin-left: auto;
+}
+
+.btn-container > button:hover {
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
 }
