@@ -26,17 +26,23 @@ class UsersController < ApplicationController
         else 
             render json: 'Not authenticated', status: :unauthorized
         end
-
-
     end
 
 
 
+    def destroy  
+        user = User.find_by(id: params[:id])
+        if user 
 
+            user.destroy 
+            head :no_content 
 
+        else  
+            render json: 'User does not exist', status: :not_found
 
+        end
 
-
+    end
 
     private 
 
