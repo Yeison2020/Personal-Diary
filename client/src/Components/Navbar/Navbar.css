@@ -1,0 +1,20 @@
+.nav-principal {
+  display: flex;
+  justify-content: right;
+}
+
+.login {
+  margin-right: 35px;
+  font-size: 18px;
+  font-family: "Mochiy Pop P One", sans-serif;
+  cursor: pointer;
+  color: #0f0e0e;
+}
+
+.signup {
+  margin-right: 25px;
+  font-size: 18px;
+  font-family: "Mochiy Pop P One", sans-serif;
+  cursor: pointer;
+  color: #0f0e0e;
+}
