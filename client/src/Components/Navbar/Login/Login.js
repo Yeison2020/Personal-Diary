@@ -1,7 +1,12 @@
 import React, { useRef } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./Login.css";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const handleSignup = () => {
+    navigate("/signup", { replace: true });
+  };
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const handleLogin = (e) => {
@@ -24,10 +29,7 @@ const Login = () => {
 
         <h4>
           <span className="signUp_color_gray">Welcome? </span>{" "}
-          <span
-            className="signupScreen_link"
-            onClick={() => console.log("Need somework")}
-          >
+          <span className="signupScreen_link" onClick={handleSignup}>
             Sign Up now.
           </span>
         </h4>

@@ -4,6 +4,7 @@ import Navbar from "../Navbar";
 import "./Router.css";
 import HomePage from "./HomePage";
 import Login from "../Login/Login";
+import Signup from "../Signup/Signup";
 const Router = () => {
   return (
     <div>
@@ -11,6 +12,7 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
     </div>
   );
