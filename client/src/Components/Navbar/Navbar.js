@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ user, setUser }) => {
   const navigate = useNavigate();
+  console.log(user);
 
   const handleLogin = () => {
     navigate("login", {
@@ -40,8 +41,14 @@ const Navbar = ({ user, setUser }) => {
     );
   } else {
     return (
-      <div className="nav-principal">
-        <p className="login">{user.nombre}</p>
+      <div className="nav-principal" id="color-user">
+        <h2 className="name-site">My book of life</h2>
+        <img
+          className="logo-user"
+          src="https://img.icons8.com/fluency-systems-filled/48/000000/user.png"
+          alt='"logo-user"'
+        />
+        <p className="login">{user.user.nombre}</p>
         <p className="signup" onClick={handleLogout}>
           Log out{" "}
         </p>

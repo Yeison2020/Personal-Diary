@@ -18,3 +18,33 @@
   cursor: pointer;
   color: #0f0e0e;
 }
+
+.logo-user {
+  height: 35px;
+  width: 35px;
+  margin-top: 15px;
+  margin-right: 7px;
+}
+.logout-user {
+  margin-top: 15px;
+  height: 35px;
+  width: 35px;
+  margin-right: 7px;
+}
+
+#color-user {
+  background: rgb(208, 121, 45);
+  background: radial-gradient(
+    circle,
+    rgba(208, 121, 45, 1) 0%,
+    rgba(148, 217, 233, 1) 100%
+  );
+}
+
+.name-site {
+  margin: auto;
+  color: black;
+  font-family: "Neonderthaw", cursive;
+  font-size: 30px;
+  border-radius: 30px;
+}

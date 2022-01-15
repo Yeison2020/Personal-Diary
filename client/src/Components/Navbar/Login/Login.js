@@ -13,6 +13,7 @@ const Login = ({ onLogin }) => {
   const passwordRef = useRef(null);
   const handleLogin = (e) => {
     e.preventDefault();
+    navigate("/", { replace: true });
     setIsLoading(true);
     const refs = {
       email: emailRef.current.value,
