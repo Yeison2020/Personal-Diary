@@ -51,7 +51,7 @@ const Signup = ({ onLogin }) => {
         <input
           ref={passwordConfirmationRef}
           placeholder="Password Confirmation"
-          type="Password_Confirmation"
+          type="Password"
         />
         <button type="submit" onClick={handleSignup}>
           Sign up
