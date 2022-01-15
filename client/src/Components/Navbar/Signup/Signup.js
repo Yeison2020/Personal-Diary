@@ -1,7 +1,10 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import "./Signup.css";
 
-const Signup = () => {
+const Signup = ({ onLogin }) => {
+  const [values, setValues] = useState({});
+  const [errors, setErrors] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const usernameRef = useRef(null);
   const passwordRef = useRef(null);
   const passwordConfirmationRef = useRef(null);
@@ -12,6 +15,33 @@ const Signup = () => {
       password: passwordRef.current.value,
       passwordConfirmation: passwordConfirmationRef.current.value,
     };
+
+    setValues(refs);
+    if (refs.password === refs.passwordConfirmation) {
+      setIsLoading(true);
+      fetch("signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: values.username,
+          password: values.password,
+          password_confirmation: values.passwordConfirmation,
+        }),
+      }).then((r) => {
+        setIsLoading(false);
+        if (r.ok) {
+          r.json().then((user) => {
+            onLogin(user);
+          });
+        } else {
+          r.json().then((err) => {
+            setErrors(err.errors);
+          });
+        }
+      });
+    }
   };
 
   return (

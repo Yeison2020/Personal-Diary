@@ -3,4 +3,12 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+
+
+
+# USER ROUTES TO EDIT USER DATA
+
+post '/signup', to: 'users#create'
+
 end

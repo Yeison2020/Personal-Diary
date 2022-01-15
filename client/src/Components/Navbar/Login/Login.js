@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import "./Login.css";
 
-const Login = () => {
+const Login = ({ onLogin }) => {
   const navigate = useNavigate();
   const handleSignup = () => {
     navigate("/signup", { replace: true });
@@ -15,6 +15,8 @@ const Login = () => {
       email: emailRef.current.value,
       password: passwordRef.current.value,
     };
+
+    console.log(refs.email);
   };
 
   return (
