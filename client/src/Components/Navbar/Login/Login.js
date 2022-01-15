@@ -1,8 +1,10 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import "./Login.css";
 
 const Login = ({ onLogin }) => {
+  const [errors, setErrors] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const handleSignup = () => {
     navigate("/signup", { replace: true });
@@ -11,12 +13,30 @@ const Login = ({ onLogin }) => {
   const passwordRef = useRef(null);
   const handleLogin = (e) => {
     e.preventDefault();
+    setIsLoading(true);
     const refs = {
       email: emailRef.current.value,
       password: passwordRef.current.value,
     };
-
-    console.log(refs.email);
+    fetch("/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: refs.email,
+        password: refs.password,
+      }),
+    }).then((r) => {
+      setIsLoading(false);
+      if (r.ok) {
+        r.json().then((user) => onLogin(user));
+      } else {
+        r.json().then((err) => {
+          setErrors(err.errors);
+        });
+      }
+    });
   };
 
   return (
