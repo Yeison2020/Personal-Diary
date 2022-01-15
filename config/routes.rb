@@ -11,6 +11,12 @@ post '/login', to: 'sessions#create'
 delete 'logout', to: 'sessions#destroy'
 
 
+#Notes controller 
+
+
+post 'notes', to: 'notes#create'
+
+
 
 
 # USER ROUTES TO EDIT USER DATA
