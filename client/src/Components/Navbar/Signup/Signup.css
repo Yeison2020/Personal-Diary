@@ -1,7 +1,7 @@
 .signScreen {
   border-radius: 10px;
   width: 300px;
-  height: 300px;
+  height: 350px;
   padding: 70px;
   margin-top: 150px;
   margin-left: auto;
@@ -24,6 +24,7 @@
   font-size: 25px;
   font-family: "Mochiy Pop P One", sans-serif;
   justify-self: center;
+  margin-top: auto;
 }
 
 .signScreen > form {

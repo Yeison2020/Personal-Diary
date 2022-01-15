@@ -5,6 +5,7 @@ const Signup = ({ onLogin }) => {
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const nombreRef = useRef(null);
   const usernameRef = useRef(null);
   const passwordRef = useRef(null);
   const passwordConfirmationRef = useRef(null);
@@ -12,6 +13,7 @@ const Signup = ({ onLogin }) => {
   const handleSignup = (e) => {
     e.preventDefault();
     const refs = {
+      nombre: nombreRef.current.value,
       username: usernameRef.current.value,
       password: passwordRef.current.value,
       passwordConfirmation: passwordConfirmationRef.current.value,
@@ -24,6 +26,7 @@ const Signup = ({ onLogin }) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        nombre: values.nombre,
         username: values.username,
         password: values.password,
         password_confirmation: values.passwordConfirmation,
@@ -46,6 +49,7 @@ const Signup = ({ onLogin }) => {
     <header className="signScreen animate__animated animate__fadeInLeftBig">
       <form>
         <h1>Sign up</h1>
+        <input ref={nombreRef} placeholder="username" type="text" />
         <input ref={usernameRef} placeholder="Email" type="username" />
         <input ref={passwordRef} placeholder="Password" type="Password" />
         <input

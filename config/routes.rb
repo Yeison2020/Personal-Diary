@@ -8,11 +8,14 @@ Rails.application.routes.draw do
 
 post '/login', to: 'sessions#create'
 
+delete 'logout', to: 'sessions#destroy'
+
 
 
 
 # USER ROUTES TO EDIT USER DATA
 
 post '/signup', to: 'users#create'
+get '/me', to: 'users#show'
 
 end
