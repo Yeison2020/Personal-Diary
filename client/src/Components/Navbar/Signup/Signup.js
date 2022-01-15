@@ -8,6 +8,7 @@ const Signup = ({ onLogin }) => {
   const usernameRef = useRef(null);
   const passwordRef = useRef(null);
   const passwordConfirmationRef = useRef(null);
+
   const handleSignup = (e) => {
     e.preventDefault();
     const refs = {
@@ -15,33 +16,30 @@ const Signup = ({ onLogin }) => {
       password: passwordRef.current.value,
       passwordConfirmation: passwordConfirmationRef.current.value,
     };
-
     setValues(refs);
-    if (refs.password === refs.passwordConfirmation) {
-      setIsLoading(true);
-      fetch("signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: values.username,
-          password: values.password,
-          password_confirmation: values.passwordConfirmation,
-        }),
-      }).then((r) => {
-        setIsLoading(false);
-        if (r.ok) {
-          r.json().then((user) => {
-            onLogin(user);
-          });
-        } else {
-          r.json().then((err) => {
-            setErrors(err.errors);
-          });
-        }
-      });
-    }
+    setIsLoading(true);
+    fetch("/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: values.username,
+        password: values.password,
+        password_confirmation: values.passwordConfirmation,
+      }),
+    }).then((r) => {
+      setIsLoading(false);
+      if (r.ok) {
+        r.json().then((user) => {
+          onLogin(user);
+        });
+      } else {
+        r.json().then((err) => {
+          setErrors(err.errors);
+        });
+      }
+    });
   };
 
   return (

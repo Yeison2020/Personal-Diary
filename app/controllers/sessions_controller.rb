@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     def create 
         user  = User.find_by_username(params[:username])
 
-        if user&autheticate(params[:password])
+        if user&authenticate(params[:password])
             session[:user_id] = user.id
             render json: user, status: :ok 
         else  
@@ -26,4 +26,10 @@ class SessionsController < ApplicationController
 
 
     end
+
+
+
+
+
+
 end
