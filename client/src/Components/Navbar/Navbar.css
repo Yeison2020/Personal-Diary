@@ -4,11 +4,13 @@
 }
 
 .login {
-  margin-right: 35px;
+  margin-right: 15px;
   font-size: 18px;
   font-family: "Mochiy Pop P One", sans-serif;
   cursor: pointer;
   color: #0f0e0e;
+  margin-top: 15px;
+  margin-bottom: 10px;
 }
 
 .signup {
@@ -17,6 +19,8 @@
   font-family: "Mochiy Pop P One", sans-serif;
   cursor: pointer;
   color: #0f0e0e;
+  margin-top: 15px;
+  margin-bottom: 10px;
 }
 
 .logo-user {
@@ -24,6 +28,7 @@
   width: 35px;
   margin-top: 15px;
   margin-right: 7px;
+  margin-bottom: 10px;
 }
 .logout-user {
   margin-top: 15px;
@@ -44,7 +49,7 @@
 .name-site {
   margin: auto;
   color: black;
-  font-family: "Neonderthaw", cursive;
+  font-family: "Mochiy Pop P One", sans-serif;
   font-size: 30px;
   border-radius: 30px;
 }

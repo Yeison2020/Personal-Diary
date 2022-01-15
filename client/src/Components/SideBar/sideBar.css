@@ -1,0 +1,20 @@
+.sideBar {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+}
+
+.sideBar > input {
+  border-radius: 10px;
+  margin: 10px;
+  height: 30px;
+}
+
+.btn {
+  align-content: flex-start;
+  margin: 3px;
+  height: 60px;
+  font-size: 15px;
+  font-family: "Neonderthaw", cursive;
+  font-family: "Nunito", sans-serif;
+}

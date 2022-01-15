@@ -1,0 +1,10 @@
+.sideBarfixed {
+  position: absolute;
+}
+
+.sideBarfixed {
+  background-color: #2d4263;
+  width: 20rem;
+  height: 100vh;
+  overflow-y: auto;
+}
