@@ -28,6 +28,9 @@ const TextEntry = () => {
       }),
     }).then((r) => {
       if (r.ok) {
+        e.target.title.reset();
+        e.target.date.reset();
+        e.target.text.reset();
         navigate("/", { replace: true });
       } else {
         r.json().then((err) => setErrors(err.errors));
