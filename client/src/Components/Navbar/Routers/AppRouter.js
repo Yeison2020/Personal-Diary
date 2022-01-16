@@ -10,7 +10,17 @@ import TextEntry from "../../TextEntry/TextEntry";
 import "./appRouter.css";
 import AllEntries from "../../AllEntries/AllEntries";
 const Router = () => {
+  const handleClick = (current) => {
+    return current;
+  };
   const [user, setUser] = useState(null);
+  const [entries, setEntries] = useState([]);
+  useEffect(() => {
+    fetch("entries")
+      .then((res) => res.json())
+      .then(setEntries);
+  }, []);
+  console.log(entries);
 
   useEffect(() => {
     fetch("/me").then((r) => {
@@ -40,8 +50,11 @@ const Router = () => {
         {" "}
         <Navbar user={user} setUser={setUser} />
         <Routes>
-          <Route path="/" element={<TextEntry />} />
-          <Route path="/entries" element={<AllEntries user={user} />} />
+          <Route path="/" element={<TextEntry handleClick={handleClick()} />} />
+          <Route
+            path="/entries"
+            element={<AllEntries user={user} entries={entries} />}
+          />
         </Routes>
       </div>
     );

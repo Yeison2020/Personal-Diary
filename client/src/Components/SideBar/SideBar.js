@@ -16,7 +16,6 @@ const SideBar = () => {
     <div className="sideBarfixed">
       <div className="change-style">
         <div className="sideBar">
-          <input type="text" placeholder="Search journal"></input>
           <button className="btn" onClick={handleNewEntry}>
             New Entry
           </button>

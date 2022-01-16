@@ -32,3 +32,42 @@
   border-radius: 20px;
   margin-right: 20px;
 }
+
+.entry-titles {
+  margin: auto;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid red;
+  width: 45%;
+}
+
+.a-entry {
+  font-family: "Mochiy Pop P One", sans-serif;
+  font-weight: 20px;
+  font-size: 20px;
+  color: #92a9bd;
+  margin-top: 20px;
+  margin-right: 40%;
+}
+
+.b-created {
+  font-family: "Mochiy Pop P One", sans-serif;
+  font-weight: 20px;
+  font-size: 20px;
+  color: #92a9bd;
+  margin-right: -4%;
+  margin-top: 20px;
+}
+
+.entrie-card {
+  padding-top: 25px;
+  margin: auto;
+  width: 45%;
+  height: 60px;
+  display: flex;
+  justify-content: space-around;
+  background-color: white;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
