@@ -10,12 +10,22 @@ const AllEntries = ({ user }) => {
       .then(setEntries);
     console.log(entries);
   }, []);
+
+  const now = new Date().toLocaleString();
+  console.log(now);
   return (
     <div>
       <div className="entries-all">
         <h1>{user.user.nombre}</h1>
-        <h2>Total of entries | Created date next to it</h2>
-        <button>New entry</button>
+        <p>Current Time {now}</p>
+        <div>
+          <input
+            type="text"
+            placeholder="search.."
+            className="search-input"
+          ></input>
+          <button className="btn-new">New entry</button>
+        </div>
       </div>
     </div>
   );

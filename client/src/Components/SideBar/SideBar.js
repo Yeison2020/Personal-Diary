@@ -9,7 +9,7 @@ const SideBar = () => {
     navigate("/", { replace: true });
   };
   const handleAllEntries = () => {
-    navigate("entries", { replace: true });
+    navigate("entries", { replace: false });
   };
 
   return (
