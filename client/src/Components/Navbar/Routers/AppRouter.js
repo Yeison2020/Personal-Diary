@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Navbar from "../Navbar";
 import "./Router.css";
 import HomePage from "./HomePage";
@@ -9,10 +9,15 @@ import SideBar from "../../SideBar/SideBar";
 import TextEntry from "../../TextEntry/TextEntry";
 import "./appRouter.css";
 import AllEntries from "../../AllEntries/AllEntries";
+import Reading from "../../Reading/Reading";
 const Router = () => {
-  const handleClick = (current) => {
+  const navigate = useNavigate();
+  const handleValueEdit = (current) => {
+    navigate("reading", { replace: true });
+    console.log(current);
     return current;
   };
+
   const [user, setUser] = useState(null);
   const [entries, setEntries] = useState([]);
   useEffect(() => {
@@ -50,7 +55,7 @@ const Router = () => {
         {" "}
         <Navbar user={user} setUser={setUser} />
         <Routes>
-          <Route path="/" element={<TextEntry handleClick={handleClick()} />} />
+          <Route path="/" element={<TextEntry />} />
           <Route
             path="/entries"
             element={<AllEntries user={user} entries={entries} />}

@@ -2,7 +2,7 @@ import React from "react";
 import "./allEntries.css";
 import EntryCard from "./EntryCard";
 
-const AllEntries = ({ user, entries, handleClick }) => {
+const AllEntries = ({ user, entries, handleValueEdit }) => {
   const now = new Date().toLocaleString();
   console.log(now);
 
@@ -31,7 +31,11 @@ const AllEntries = ({ user, entries, handleClick }) => {
         </div>
       </div>
       {entries.notes.map((data) => (
-        <EntryCard key={data.id} data={data} />
+        <EntryCard
+          key={data.id}
+          data={data}
+          handleValueEdit={handleValueEdit}
+        />
       ))}
     </>
   );

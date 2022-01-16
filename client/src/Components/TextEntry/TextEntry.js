@@ -1,14 +1,26 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./textEntry.css";
 import SideBar from "../SideBar/SideBar";
 
-const TextEntry = () => {
+const TextEntry = ({ data }) => {
+  const [entries, setEntries] = useState([]);
   const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
   const dateRef = useRef("");
   const titleRef = useRef("");
   const textAreaRef = useRef("");
+
+  useEffect(() => {
+    fetch("entries")
+      .then((res) => res.json())
+      .then(setEntries);
+  }, []);
+  console.log(entries);
+  console.log(data);
+  // const filterData = entries.notes.filter((entry) => entry.id === data);
+
+  // console.log(filterData);
 
   const handleSave = (e) => {
     e.preventDefault();
