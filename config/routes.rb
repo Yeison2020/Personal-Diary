@@ -16,6 +16,8 @@ delete 'logout', to: 'sessions#destroy'
 
 post 'notes', to: 'notes#create'
 
+get 'entries', to: 'notes#all_notes_current_user'
+
 
 
 

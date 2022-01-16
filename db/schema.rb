@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2022_01_13_170557) do
     t.string "title"
     t.date "date"
     t.text "diary"
+    t.boolean "starred"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

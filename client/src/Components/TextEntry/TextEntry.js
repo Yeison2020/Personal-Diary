@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./textEntry.css";
+import SideBar from "../SideBar/SideBar";
 
 const TextEntry = () => {
   const [errors, setErrors] = useState([]);
@@ -8,6 +9,7 @@ const TextEntry = () => {
   const dateRef = useRef("");
   const titleRef = useRef("");
   const textAreaRef = useRef("");
+
   const handleSave = (e) => {
     e.preventDefault();
     const refs = {
@@ -28,50 +30,53 @@ const TextEntry = () => {
       }),
     }).then((r) => {
       if (r.ok) {
-        e.target.title.reset();
-        e.target.date.reset();
-        e.target.text.reset();
         navigate("/", { replace: true });
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
     });
+    const elemento = document.getElementById("paper");
+    elemento.reset();
   };
   return (
-    <div id="wrapper">
-      <form id="paper" method="get" action="">
-        <div id="margin">
-          <div className="text-style">
-            {" "}
-            Title: <input id="title" type="text" name="title" ref={titleRef} />
-          </div>
+    <>
+      <SideBar />
+      <div id="wrapper">
+        <form id="paper" method="get" action="">
+          <div id="margin">
+            <div className="text-style">
+              {" "}
+              Title:{" "}
+              <input id="title" type="text" name="title" ref={titleRef} />
+            </div>
 
-          <div className="text-style">
-            {" "}
-            Date: <input id="title" type="date" name="date" ref={dateRef} />
+            <div className="text-style">
+              {" "}
+              Date: <input id="title" type="date" name="date" ref={dateRef} />
+            </div>
           </div>
-        </div>
-        <textarea
-          ref={textAreaRef}
-          placeholder="Enter something funny."
-          id="text"
-          name="text"
-          rows="4"
-          style={{
-            overflow: "hidden",
-            "word-wrap": "break-word",
-            height: "600px",
-          }}
-        ></textarea>
-        <br />
-        <input
-          id="button"
-          type="submit"
-          value="Save now"
-          onClick={handleSave}
-        />
-      </form>
-    </div>
+          <textarea
+            ref={textAreaRef}
+            placeholder="Enter something funny."
+            id="text"
+            name="text"
+            rows="4"
+            style={{
+              overflow: "hidden",
+              "word-wrap": "break-word",
+              height: "600px",
+            }}
+          ></textarea>
+          <br />
+          <input
+            id="button"
+            type="submit"
+            value="Save now"
+            onClick={handleSave}
+          />
+        </form>
+      </div>
+    </>
   );
 };
 

@@ -8,6 +8,7 @@ import Signup from "../Signup/Signup";
 import SideBar from "../../SideBar/SideBar";
 import TextEntry from "../../TextEntry/TextEntry";
 import "./appRouter.css";
+import AllEntries from "../../AllEntries/AllEntries";
 const Router = () => {
   const [user, setUser] = useState(null);
 
@@ -38,12 +39,10 @@ const Router = () => {
       <div>
         {" "}
         <Navbar user={user} setUser={setUser} />
-        <div className="sideBarfixed">
-          <SideBar />
-        </div>
-        <div className="text-entry">
-          <TextEntry />
-        </div>
+        <Routes>
+          <Route path="/" element={<TextEntry />} />
+          <Route path="/entries" element={<AllEntries user={user} />} />
+        </Routes>
       </div>
     );
   }

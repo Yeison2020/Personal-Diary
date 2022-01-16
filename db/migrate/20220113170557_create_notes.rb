@@ -4,6 +4,7 @@ class CreateNotes < ActiveRecord::Migration[7.0]
       t.string :title
       t.date :date
       t.text :diary
+      t.boolean :starred
       t.integer :user_id
       t.timestamps
     end

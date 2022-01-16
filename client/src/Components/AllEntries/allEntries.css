@@ -1,0 +1,10 @@
+.entries-all {
+  display: flex;
+
+  background-color: red;
+}
+
+.entries-all > button {
+  justify-self: end;
+  margin: auto;
+}
