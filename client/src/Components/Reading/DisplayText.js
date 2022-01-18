@@ -10,8 +10,8 @@ const DisplayText = ({ data, entries }) => {
     };
   };
 
-  // const filterentries = entries.notes.filter((entry) => entry.id === data);
-  // console.log(filterentries);
+  const filterentries = entries.notes.filter((entry) => entry.id === data);
+  console.log(filterentries[0].title);
 
   console.log(entries);
   const dateRef = useRef("");
@@ -19,23 +19,35 @@ const DisplayText = ({ data, entries }) => {
   const textAreaRef = useRef("");
   return (
     <>
-      <div id="wrapper-2">
+      <div id="wrapper2">
         <form id="paper" method="get" action="">
           <div id="margin">
             <div className="text-style">
               {" "}
               Title:{" "}
-              <input id="title" type="text" name="title" ref={titleRef} />
+              <input
+                id="title"
+                type="text"
+                name="title"
+                ref={titleRef}
+                placeholder={filterentries[0].title}
+              />
             </div>
 
             <div className="text-style">
               {" "}
-              Date: <input id="title" type="date" name="date" ref={dateRef} />
+              Date:{" "}
+              <input
+                id="title"
+                type="date"
+                name="date"
+                ref={dateRef}
+                placeholder={filterentries[0].date}
+              />
             </div>
           </div>
           <textarea
             ref={textAreaRef}
-            placeholder="Enter something funny."
             id="text"
             name="text"
             rows="4"
@@ -44,12 +56,13 @@ const DisplayText = ({ data, entries }) => {
               "word-wrap": "break-word",
               height: "600px",
             }}
+            placeholder={filterentries[0].diary}
           ></textarea>
           <br />
           <input
             id="button"
             type="submit"
-            value="Save now"
+            value="Replace"
             onClick={handleSave}
           />
         </form>
