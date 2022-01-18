@@ -3,10 +3,11 @@ import "./sideBar.css";
 import { useNavigate } from "react-router-dom";
 
 const SideBar = () => {
-  const [entries, setEntries] = useState([]);
   const navigate = useNavigate();
+
   const handleNewEntry = () => {
-    navigate("/", { replace: true });
+    const elemento = document.getElementById("paper");
+    elemento.reset();
   };
   const handleAllEntries = () => {
     navigate("entries", { replace: false });
