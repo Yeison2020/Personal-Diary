@@ -68,7 +68,10 @@ const Router = () => {
               />
             }
           />
-          <Route path="reading" element={<Reading data={value} />}></Route>
+          <Route
+            path="reading"
+            element={<Reading data={value} entries={entries} />}
+          ></Route>
         </Routes>
       </div>
     );

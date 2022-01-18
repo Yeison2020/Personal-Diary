@@ -5,6 +5,9 @@ import { useNavigate } from "react-router-dom";
 const Navbar = ({ user, setUser }) => {
   const navigate = useNavigate();
   console.log(user);
+  const handleHome = () => {
+    navigate("/", { replace: true });
+  };
 
   const handleLogin = () => {
     navigate("login", {
@@ -42,7 +45,9 @@ const Navbar = ({ user, setUser }) => {
   } else {
     return (
       <div className="nav-principal" id="color-user">
-        <h2 className="name-site">My book of life</h2>
+        <h2 className="name-site" onClick={handleHome}>
+          My book of life
+        </h2>
         <img
           className="logo-user"
           src="https://img.icons8.com/fluency-systems-filled/48/000000/user.png"

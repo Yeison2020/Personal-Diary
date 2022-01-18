@@ -1,10 +1,11 @@
 import React from "react";
 import DisplayText from "./DisplayText";
+import "./reading.css";
 
-const Reading = ({ data }) => {
+const Reading = ({ data, entries }) => {
   return (
-    <div>
-      <DisplayText data={data} />
+    <div className="display-container">
+      <DisplayText data={data} entries={entries} />
     </div>
   );
 };

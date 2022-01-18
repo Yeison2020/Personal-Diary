@@ -1,8 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import "./reading.css";
 
-const DisplayText = ({ data }) => {
-  const [entries, setEntries] = useState([]);
+const DisplayText = ({ data, entries }) => {
   const handleSave = () => {
     const refs = {
       date: dateRef.current.value,
@@ -10,11 +9,6 @@ const DisplayText = ({ data }) => {
       textArea: textAreaRef.current.value,
     };
   };
-  useEffect(() => {
-    fetch("entries")
-      .then((res) => res.json())
-      .then(setEntries);
-  }, []);
 
   // const filterentries = entries.notes.filter((entry) => entry.id === data);
   // console.log(filterentries);
