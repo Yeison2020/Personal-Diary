@@ -19,7 +19,7 @@ const DisplayText = ({ data, entries }) => {
   const textAreaRef = useRef("");
   return (
     <>
-      <div id="wrapper">
+      <div id="wrapper-2">
         <form id="paper" method="get" action="">
           <div id="margin">
             <div className="text-style">
