@@ -6,7 +6,7 @@ const EntryCard = ({ data, handleValueEdit }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/", { replace: false });
+    navigate("/reading", { replace: false });
     handleValueEdit(data.id);
   };
   return (

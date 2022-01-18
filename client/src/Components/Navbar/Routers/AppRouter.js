@@ -11,10 +11,12 @@ import "./appRouter.css";
 import AllEntries from "../../AllEntries/AllEntries";
 import Reading from "../../Reading/Reading";
 const Router = () => {
+  const [value, setValue] = useState(1);
   const navigate = useNavigate();
   const handleValueEdit = (current) => {
     navigate("reading", { replace: true });
     console.log(current);
+    setValue(current);
     return current;
   };
 
@@ -58,8 +60,15 @@ const Router = () => {
           <Route path="/" element={<TextEntry />} />
           <Route
             path="/entries"
-            element={<AllEntries user={user} entries={entries} />}
+            element={
+              <AllEntries
+                user={user}
+                entries={entries}
+                handleValueEdit={handleValueEdit}
+              />
+            }
           />
+          <Route path="reading" element={<Reading data={value} />}></Route>
         </Routes>
       </div>
     );

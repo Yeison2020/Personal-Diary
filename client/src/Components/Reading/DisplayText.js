@@ -1,7 +1,8 @@
-import React, { useRef } from "react";
-import SideBar from "../SideBar/SideBar";
+import React, { useRef, useEffect, useState } from "react";
+import "./reading.css";
 
-const DisplayText = () => {
+const DisplayText = ({ data }) => {
+  const [entries, setEntries] = useState([]);
   const handleSave = () => {
     const refs = {
       date: dateRef.current.value,
@@ -9,12 +10,21 @@ const DisplayText = () => {
       textArea: textAreaRef.current.value,
     };
   };
+  useEffect(() => {
+    fetch("entries")
+      .then((res) => res.json())
+      .then(setEntries);
+  }, []);
+
+  // const filterentries = entries.notes.filter((entry) => entry.id === data);
+  // console.log(filterentries);
+
+  console.log(entries);
   const dateRef = useRef("");
   const titleRef = useRef("");
   const textAreaRef = useRef("");
   return (
     <>
-      <SideBar />
       <div id="wrapper">
         <form id="paper" method="get" action="">
           <div id="margin">
