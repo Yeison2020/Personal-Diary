@@ -1,14 +1,7 @@
 import React from "react";
-import TextEntry from "../TextEntry/TextEntry";
-import Navbar from "../Navbar/Navbar";
 
 const Reading = () => {
-  return (
-    <div>
-      <Navbar />
-      <TextEntry />
-    </div>
-  );
+  return <div></div>;
 };
 
 export default Reading;
