@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import "./Signup.css";
+import { useNavigate } from "react-router-dom";
 
 const Signup = ({ onLogin }) => {
   const [values, setValues] = useState({});
@@ -9,8 +10,10 @@ const Signup = ({ onLogin }) => {
   const usernameRef = useRef(null);
   const passwordRef = useRef(null);
   const passwordConfirmationRef = useRef(null);
+  const navigate = useNavigate();
 
   const handleSignup = (e) => {
+    navigate("/", { replace: true });
     e.preventDefault();
     const refs = {
       nombre: nombreRef.current.value,

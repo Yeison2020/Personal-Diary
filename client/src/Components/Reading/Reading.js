@@ -2,10 +2,10 @@ import React from "react";
 import DisplayText from "./DisplayText";
 import "./reading.css";
 
-const Reading = ({ data, entries }) => {
+const Reading = ({ data, entries, setEntries }) => {
   return (
     <div className="display-container">
-      <DisplayText data={data} entries={entries} />
+      <DisplayText data={data} entries={entries} setEntries={setEntries} />
     </div>
   );
 };

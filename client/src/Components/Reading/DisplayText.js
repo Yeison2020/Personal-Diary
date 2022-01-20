@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import "./reading.css";
 
-const DisplayText = ({ data, entries }) => {
+const DisplayText = ({ data, entries, setEntries }) => {
   const handleSave = (e) => {
     e.preventDefault();
 
@@ -18,9 +18,10 @@ const DisplayText = ({ data, entries }) => {
       body: JSON.stringify(refs),
     })
       .then((resp) => resp.json())
-      .then((data) => console.lolg(data));
+      .then((data) => console.log(data));
 
     const elemento = document.getElementById("paper");
+    setEntries(entries);
     elemento.reset();
   };
 
