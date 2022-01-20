@@ -52,7 +52,7 @@ const TextEntry = ({ data }) => {
   };
   return (
     <>
-      <SideBar />
+      <SideBar entries={entries} />
       <div id="wrapper">
         <form id="paper" method="get" action="">
           <div id="margin">

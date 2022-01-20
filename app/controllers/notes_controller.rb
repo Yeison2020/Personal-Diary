@@ -21,10 +21,23 @@ class NotesController < ApplicationController
 
 
 
+    def update_note 
+        updated_note = current_user.notes.find_by(id: params[:id])
+        if updated_note
+            updated_note.update(notes_params)
+            render json: updated_note
+        else 
+            render json: {error: 'Note not found'}, status: :not_found
+        end
+    end
+
+
+
 
     private 
 
     def notes_params 
         params.permit(:title, :date, :diary)
+     
     end
 end

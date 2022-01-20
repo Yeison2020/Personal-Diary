@@ -19,6 +19,9 @@ post 'notes', to: 'notes#create'
 get 'entries', to: 'notes#all_notes_current_user'
 
 
+patch '/replace/:id', to: 'notes#update_note'
+
+
 
 
 # USER ROUTES TO EDIT USER DATA

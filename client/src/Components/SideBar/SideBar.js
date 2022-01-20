@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import "./sideBar.css";
 import { useNavigate } from "react-router-dom";
+import MiniCards from "../miniCardsEntries/MiniCards";
 
-const SideBar = () => {
+const SideBar = ({ entries }) => {
   const navigate = useNavigate();
+
+  console.log(entries);
 
   const handleNewEntry = () => {
     const elemento = document.getElementById("paper");
@@ -12,6 +15,8 @@ const SideBar = () => {
   const handleAllEntries = () => {
     navigate("entries", { replace: false });
   };
+
+  const notesArray = entries?.notes;
 
   return (
     <div className="sideBarfixed">
@@ -24,6 +29,9 @@ const SideBar = () => {
             View all Entries
           </button>
           <button className="btn">View Starred Entries</button>
+          {notesArray?.map((data) => (
+            <MiniCards key={data.id} data={data} />
+          ))}
         </div>
       </div>
     </div>

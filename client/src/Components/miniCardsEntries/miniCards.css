@@ -1,0 +1,25 @@
+.container-mini-cards {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container-mini-cards {
+  background-color: #aefeff;
+  margin: 3px;
+  height: 60px;
+  font-size: 15px;
+  font-family: "Neonderthaw", cursive;
+  font-family: "Nunito", sans-serif;
+}
+
+.name-cards {
+  margin-right: 30px;
+}
+
+.date-cards {
+  margin-left: 30px;
+}

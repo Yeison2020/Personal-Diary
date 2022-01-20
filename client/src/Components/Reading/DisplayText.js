@@ -2,12 +2,26 @@ import React, { useRef, useEffect, useState } from "react";
 import "./reading.css";
 
 const DisplayText = ({ data, entries }) => {
-  const handleSave = () => {
+  const handleSave = (e) => {
+    e.preventDefault();
+
     const refs = {
       date: dateRef.current.value,
       title: titleRef.current.value,
-      textArea: textAreaRef.current.value,
+      diary: textAreaRef.current.value,
     };
+    fetch(`replace/${data}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(refs),
+    })
+      .then((resp) => resp.json())
+      .then((data) => console.lolg(data));
+
+    const elemento = document.getElementById("paper");
+    elemento.reset();
   };
 
   const filterentries = entries.notes.filter((entry) => entry.id === data);
@@ -17,6 +31,7 @@ const DisplayText = ({ data, entries }) => {
   const dateRef = useRef("");
   const titleRef = useRef("");
   const textAreaRef = useRef("");
+
   return (
     <>
       <div id="wrapper2">
@@ -63,7 +78,7 @@ const DisplayText = ({ data, entries }) => {
             id="button"
             type="submit"
             value="Replace"
-            onClick={handleSave}
+            onClick={(e) => handleSave(e)}
           />
         </form>
       </div>
