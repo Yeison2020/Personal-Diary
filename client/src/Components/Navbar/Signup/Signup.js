@@ -25,25 +25,25 @@ const Signup = ({ onLogin }) => {
     handleChange(e);
     console.log(values);
 
-    // setIsLoading(true);
-    // fetch("/signup", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(values),
-    // }).then((r) => {
-    //   setIsLoading(false);
-    //   if (r.ok) {
-    //     r.json().then((user) => {
-    //       onLogin(user);
-    //     });
-    //   } else {
-    //     r.json().then((err) => {
-    //       setErrors(err.errors);
-    //     });
-    //   }
-    // });
+    setIsLoading(true);
+    fetch("/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
+    }).then((r) => {
+      setIsLoading(false);
+      if (r.ok) {
+        r.json().then((user) => {
+          onLogin(user);
+        });
+      } else {
+        r.json().then((err) => {
+          setErrors(err.errors);
+        });
+      }
+    });
   };
 
   return (
