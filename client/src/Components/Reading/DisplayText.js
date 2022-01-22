@@ -1,19 +1,28 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import "./reading.css";
 
 const DisplayText = ({ data, entries }) => {
+  const dataStore = useMemo(() => data);
+
+  console.log(entries, data);
+  const filterentries = entries.notes.filter((entry) => entry.id === dataStore);
+  const [dataLocal, setData] = useState(() => {
+    const saved = localStorage.getItem("data");
+    const initialValue = JSON.parse(saved);
+    return initialValue || "";
+  });
   const [formData, setFormatData] = useState({
-    data: "",
-    title: "",
-    diary: "",
+    date: filterentries[0]?.date,
+    title: filterentries[0]?.title,
+    diary: filterentries[0]?.diary,
   });
 
-  const filterentries = entries.notes.filter((entry) => entry.id === data);
+  useEffect(() => {
+    localStorage.setItem("data", JSON.stringify(formData));
+    setFormatData(dataLocal);
+  }, []);
 
-  console.log("Filtered Initial state:", filterentries);
-
-  console.log(entries);
-
+  console.log(dataLocal);
   const handleChange = (e) => {
     setFormatData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -76,13 +85,13 @@ const DisplayText = ({ data, entries }) => {
               height: "600px",
             }}
             onChange={handleChange}
-            value={formData.text}
+            value={formData.diary}
           ></textarea>
           <br />
           <input
             id="button"
             type="submit"
-            value="Replace"
+            value="Update Page"
             onClick={(e) => handleSave(e)}
           />
         </form>
