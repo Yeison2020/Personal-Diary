@@ -2,20 +2,32 @@ import React, { useRef, useEffect, useState } from "react";
 import "./reading.css";
 
 const DisplayText = ({ data, entries }) => {
+  const [formData, setFormatData] = useState({
+    data: "",
+    title: "",
+    diary: "",
+  });
+
+  const filterentries = entries.notes.filter((entry) => entry.id === data);
+
+  console.log("Filtered Initial state:", filterentries);
+
+  console.log(entries);
+
+  const handleChange = (e) => {
+    setFormatData({ ...formData, [e.target.name]: e.target.value });
+  };
   const handleSave = (e) => {
     e.preventDefault();
+    handleChange(e);
+    console.log(formData);
 
-    const refs = {
-      date: dateRef.current.value,
-      title: titleRef.current.value,
-      diary: textAreaRef.current.value,
-    };
     fetch(`replace/${data}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(refs),
+      body: JSON.stringify(formData),
     })
       .then((resp) => resp.json())
       .then((data) => console.log(data));
@@ -24,14 +36,6 @@ const DisplayText = ({ data, entries }) => {
 
     elemento.reset();
   };
-
-  const filterentries = entries.notes.filter((entry) => entry.id === data);
-  console.log(filterentries[0].title);
-
-  console.log(entries);
-  const dateRef = useRef("");
-  const titleRef = useRef("");
-  const textAreaRef = useRef("");
 
   return (
     <>
@@ -45,8 +49,8 @@ const DisplayText = ({ data, entries }) => {
                 id="title"
                 type="text"
                 name="title"
-                ref={titleRef}
-                placeholder={filterentries[0].title}
+                onChange={handleChange}
+                value={formData.title}
               />
             </div>
 
@@ -57,22 +61,22 @@ const DisplayText = ({ data, entries }) => {
                 id="title"
                 type="date"
                 name="date"
-                ref={dateRef}
-                placeholder={filterentries[0].date}
+                onChange={handleChange}
+                value={formData.date}
               />
             </div>
           </div>
           <textarea
-            ref={textAreaRef}
             id="text"
-            name="text"
+            name="diary"
             rows="4"
             style={{
               overflow: "hidden",
               "word-wrap": "break-word",
               height: "600px",
             }}
-            placeholder={filterentries[0].diary}
+            onChange={handleChange}
+            value={formData.text}
           ></textarea>
           <br />
           <input
