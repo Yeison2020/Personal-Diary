@@ -3,37 +3,33 @@ import "./Signup.css";
 import { useNavigate } from "react-router-dom";
 
 const Signup = ({ onLogin }) => {
-  const [values, setValues] = useState({});
+  const [values, setValues] = useState({
+    username: "",
+    nombre: "",
+    password: "",
+    password_confirmation: "",
+  });
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const nombreRef = useRef(null);
-  const usernameRef = useRef(null);
-  const passwordRef = useRef(null);
-  const passwordConfirmationRef = useRef(null);
+  // const nombreRef = useRef(null);
+  // const usernameRef = useRef(null);
+  // const passwordRef = useRef(null);
+
   const navigate = useNavigate();
 
   const handleSignup = (e) => {
     navigate("/", { replace: true });
     e.preventDefault();
-    const refs = {
-      nombre: nombreRef.current.value,
-      username: usernameRef.current.value,
-      password: passwordRef.current.value,
-      passwordConfirmation: passwordConfirmationRef.current.value,
-    };
-    setValues(refs);
+    setValues({ ...values, [e.target.name]: e.target.value });
+    console.log(values);
+
     setIsLoading(true);
     fetch("/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        nombre: values.nombre,
-        username: values.username,
-        password: values.password,
-        password_confirmation: values.passwordConfirmation,
-      }),
+      body: JSON.stringify(values),
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
@@ -52,15 +48,15 @@ const Signup = ({ onLogin }) => {
     <header className="signScreen animate__animated animate__fadeInLeftBig">
       <form>
         <h1>Sign up</h1>
-        <input ref={nombreRef} placeholder="username" type="text" />
-        <input ref={usernameRef} placeholder="Email" type="username" />
-        <input ref={passwordRef} placeholder="Password" type="Password" />
+        <input placeholder="username" type="text" name="nombre" />
+        <input placeholder="Email" type="username" name="username" />
+        <input placeholder="Password" type="Password" name="password" />
         <input
-          ref={passwordConfirmationRef}
           placeholder="Password Confirmation"
           type="Password"
+          name="password_confirmation"
         />
-        <button type="submit" onClick={handleSignup}>
+        <button type="submit" onClick={(e) => handleSignup(e)}>
           Sign up
         </button>
       </form>
