@@ -11,6 +11,7 @@ const DisplayText = ({ data, entries }) => {
     const initialValue = JSON.parse(saved);
     return initialValue || "";
   });
+
   const [formData, setFormatData] = useState({
     date: filterentries[0]?.date,
     title: filterentries[0]?.title,
@@ -81,7 +82,7 @@ const DisplayText = ({ data, entries }) => {
             rows="4"
             style={{
               overflow: "hidden",
-              "word-wrap": "break-word",
+
               height: "600px",
             }}
             onChange={handleChange}

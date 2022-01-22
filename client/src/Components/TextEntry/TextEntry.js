@@ -75,7 +75,6 @@ const TextEntry = ({ data }) => {
             rows="4"
             style={{
               overflow: "hidden",
-              "word-wrap": "break-word",
               height: "600px",
             }}
           ></textarea>
