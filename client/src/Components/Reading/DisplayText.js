@@ -3,6 +3,7 @@ import "./reading.css";
 
 const DisplayText = ({ data, entries }) => {
   const dataStore = useMemo(() => data);
+  const [id, setId] = useState(dataStore);
 
   console.log(entries, data);
   const filterentries = entries.notes.filter((entry) => entry.id === dataStore);
@@ -11,12 +12,24 @@ const DisplayText = ({ data, entries }) => {
     const initialValue = JSON.parse(saved);
     return initialValue || "";
   });
+  localStorage.setItem("IdValue", JSON.stringify(dataStore));
+  const [IdValue, setIdValue] = useState(() => {
+    const saved = localStorage.getItem("IdValue");
+    const initialValue = JSON.parse(saved);
+    return initialValue || "";
+  });
+
+  useEffect(() => {
+    setId(IdValue);
+  }, []);
 
   const [formData, setFormatData] = useState({
     date: filterentries[0]?.date,
     title: filterentries[0]?.title,
     diary: filterentries[0]?.diary,
   });
+
+  console.log(formData);
   localStorage.setItem("data", JSON.stringify(formData));
 
   useEffect(() => {
@@ -32,7 +45,7 @@ const DisplayText = ({ data, entries }) => {
     handleChange(e);
     console.log(formData);
 
-    fetch(`replace/${data}`, {
+    fetch(`replace/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -82,19 +95,15 @@ const DisplayText = ({ data, entries }) => {
             rows="4"
             style={{
               overflow: "hidden",
-
               height: "600px",
             }}
             onChange={handleChange}
             value={formData.diary}
           ></textarea>
           <br />
-          <input
-            id="button"
-            type="submit"
-            value="Update Page"
-            onClick={(e) => handleSave(e)}
-          />
+          <button id="button" onClick={(e) => handleSave(e)}>
+            Update Page
+          </button>
         </form>
       </div>
     </>
