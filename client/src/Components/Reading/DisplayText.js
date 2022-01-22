@@ -16,9 +16,9 @@ const DisplayText = ({ data, entries }) => {
     title: filterentries[0]?.title,
     diary: filterentries[0]?.diary,
   });
+  localStorage.setItem("data", JSON.stringify(formData));
 
   useEffect(() => {
-    localStorage.setItem("data", JSON.stringify(formData));
     setFormatData(dataLocal);
   }, []);
 
