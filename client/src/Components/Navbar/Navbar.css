@@ -58,3 +58,15 @@
 .image-log {
   margin: 10px;
 }
+
+.Home-page-color {
+  opacity: 1;
+  background-image: linear-gradient(
+    to right bottom,
+    #5ed7dc,
+    #5fc8cc,
+    #60b9bd,
+    #5faaae,
+    #5e9c9f
+  );
+}

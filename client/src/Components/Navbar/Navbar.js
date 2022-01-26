@@ -1,10 +1,12 @@
 import React from "react";
 import "./Navbar.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Navbar = ({ user, setUser }) => {
   const navigate = useNavigate();
   console.log(user);
+  const location = useLocation();
+  console.log(location);
   const handleHome = () => {
     navigate("/", { replace: true });
   };
@@ -35,17 +37,19 @@ const Navbar = ({ user, setUser }) => {
     return (
       <>
         <div>
-          <div className="nav-principal">
+          <div className="nav-principal Home-page-color">
             <p className="login" onClick={handleLogin}>
               Log in
             </p>
             <p className="signup" onClick={handleSignup}>
               Sign up{" "}
             </p>
-            <p className="signup" onClick={handleHome}>
-              {" "}
-              Home
-            </p>
+            {location.pathname !== "/" && (
+              <p className="signup" onClick={handleHome}>
+                {" "}
+                Home
+              </p>
+            )}
           </div>
         </div>
       </>
