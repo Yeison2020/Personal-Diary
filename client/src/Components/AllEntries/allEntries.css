@@ -75,3 +75,18 @@
 .title-btn {
   cursor: pointer;
 }
+
+.form-btn {
+  display: flex;
+}
+
+.form-btn > h4 {
+  font-family: "Mochiy Pop P One", sans-serif;
+  margin-top: 13px;
+}
+
+.image-arrow {
+  margin-top: 11px;
+  width: 35px;
+  height: 35px;
+}

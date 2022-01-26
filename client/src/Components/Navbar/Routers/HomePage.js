@@ -1,7 +1,12 @@
 import React from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import "./Router.css";
 
 const HomePage = () => {
+  const navigate = useNavigate();
+  const handleStart = () => {
+    navigate("/signup", { replace: true });
+  };
   return (
     <div>
       <div className="title-App">
@@ -9,7 +14,9 @@ const HomePage = () => {
         <p>Your privacy is Here</p>
       </div>
       <div className="btn-container">
-        <button className="btn-start">Start writing your history now</button>
+        <button className="btn-start" onClick={handleStart}>
+          Start writing your history now
+        </button>
       </div>
 
       <div className="container-image">

@@ -40,6 +40,10 @@ const Router = () => {
 
   console.log(user);
 
+  /// Animations
+
+  // The End
+
   if (!user) {
     return (
       <div>

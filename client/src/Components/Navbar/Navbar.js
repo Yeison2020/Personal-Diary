@@ -33,13 +33,15 @@ const Navbar = ({ user, setUser }) => {
 
   if (!user) {
     return (
-      <div className="nav-principal">
-        <p className="login" onClick={handleLogin}>
-          Log in
-        </p>
-        <p className="signup" onClick={handleSignup}>
-          Sign up{" "}
-        </p>
+      <div>
+        <div className="nav-principal">
+          <p className="login" onClick={handleLogin}>
+            Log in
+          </p>
+          <p className="signup" onClick={handleSignup}>
+            Sign up{" "}
+          </p>
+        </div>
       </div>
     );
   } else {
