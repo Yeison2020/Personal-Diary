@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Router.css";
 
 const HomePage = () => {
@@ -10,7 +10,9 @@ const HomePage = () => {
   return (
     <div>
       <div className="title-App">
-        <h1>My book of life</h1>
+        <h1 className="animate__animated  animate__bounceInDown">
+          My book of life
+        </h1>
         <p>Your privacy is Here</p>
       </div>
       <div className="btn-container">
@@ -21,11 +23,10 @@ const HomePage = () => {
 
       <div className="container-image">
         <img
-          className="image-logo"
+          className="image-logo animate__animated animate__rubberBand"
           src="https://img.icons8.com/color/48/000000/open-book--v2.png"
           alt="book diary"
         />
-        ;
       </div>
     </div>
   );

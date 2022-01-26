@@ -53,7 +53,7 @@ const TextEntry = ({ data }) => {
   return (
     <>
       <SideBar entries={entries} />
-      <div id="wrapper">
+      <div id="wrapper" className="animate__animated ">
         <form id="paper" method="get" action="">
           <div id="margin">
             <div className="text-style">
