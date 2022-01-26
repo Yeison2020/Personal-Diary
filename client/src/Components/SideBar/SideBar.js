@@ -28,7 +28,6 @@ const SideBar = ({ entries }) => {
           <button className="btn" onClick={handleAllEntries}>
             View all Entries
           </button>
-          <button className="btn">View Starred Entries</button>
           {notesArray?.map((data) => (
             <MiniCards key={data.id} data={data} />
           ))}

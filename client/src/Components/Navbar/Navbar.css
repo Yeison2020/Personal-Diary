@@ -47,11 +47,12 @@
 }
 
 .name-site {
-  margin: auto;
   color: black;
   font-family: "Mochiy Pop P One", sans-serif;
   font-size: 30px;
   border-radius: 30px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .image-log {
