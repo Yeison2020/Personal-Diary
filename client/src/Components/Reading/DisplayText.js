@@ -1,9 +1,12 @@
 import React, { useEffect, useState, useMemo } from "react";
 import "./reading.css";
+import { useNavigate } from "react-router-dom";
 
 const DisplayText = ({ data, entries }) => {
   const dataStore = useMemo(() => data);
   const [id, setId] = useState(dataStore);
+
+  const navigate = useNavigate();
 
   console.log(entries, data);
   const filterentries = entries.notes.filter((entry) => entry.id === dataStore);
@@ -56,7 +59,7 @@ const DisplayText = ({ data, entries }) => {
       .then((data) => console.log(data));
 
     const elemento = document.getElementById("paper");
-
+    navigate("/", { replace: true });
     elemento.reset();
   };
 
