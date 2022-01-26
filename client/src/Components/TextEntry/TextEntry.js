@@ -29,26 +29,30 @@ const TextEntry = ({ data }) => {
       title: titleRef.current.value,
       textArea: textAreaRef.current.value,
     };
-
-    fetch("notes", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        title: refs.title,
-        date: refs.date,
-        diary: refs.textArea,
-      }),
-    }).then((r) => {
-      if (r.ok) {
-        navigate("/", { replace: true });
-      } else {
-        r.json().then((err) => setErrors(err.errors));
-      }
-    });
-    const elemento = document.getElementById("paper");
-    elemento.reset();
+    if (refs.date.length === 0 || refs.title.length === 0 || refs.textArea) {
+      const elemento = document.getElementById("paper");
+      elemento.reset();
+    } else {
+      fetch("notes", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title: refs.title,
+          date: refs.date,
+          diary: refs.textArea,
+        }),
+      }).then((r) => {
+        if (r.ok) {
+          navigate("/", { replace: true });
+        } else {
+          r.json().then((err) => setErrors(err.errors));
+        }
+      });
+      const elemento = document.getElementById("paper");
+      elemento.reset();
+    }
   };
   return (
     <>
