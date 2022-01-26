@@ -29,7 +29,11 @@ const TextEntry = ({ data }) => {
       title: titleRef.current.value,
       textArea: textAreaRef.current.value,
     };
-    if (refs.date.length === 0 || refs.title.length === 0 || refs.textArea) {
+    if (
+      refs.date.length <= 0 ||
+      refs.title.length <= 0 ||
+      refs.textArea.length <= 0
+    ) {
       const elemento = document.getElementById("paper");
       elemento.reset();
     } else {
