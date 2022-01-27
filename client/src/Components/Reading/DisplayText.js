@@ -3,24 +3,32 @@ import "./reading.css";
 import { useNavigate } from "react-router-dom";
 
 const DisplayText = ({ data, entries }) => {
+  const navigate = useNavigate();
   const dataStore = useMemo(() => data);
   const [id, setId] = useState(dataStore);
+  const [entrie, setEntriesValues] = useState([entries]);
 
-  const navigate = useNavigate();
-
-  console.log(entries, data);
-  const filterentries = entries.notes.filter((entry) => entry.id === dataStore);
-  const [dataLocal, setData] = useState(() => {
-    const saved = localStorage.getItem("data");
-    const initialValue = JSON.parse(saved);
-    return initialValue || "";
-  });
+  useEffect(() => {
+    fetch("entries")
+      .then((res) => res.json())
+      .then(setEntriesValues);
+  }, []);
+  if (!entries) entries = entrie;
+  console.log(entrie, entries, data);
   localStorage.setItem("IdValue", JSON.stringify(dataStore));
   const [IdValue, setIdValue] = useState(() => {
     const saved = localStorage.getItem("IdValue");
     const initialValue = JSON.parse(saved);
     return initialValue || "";
   });
+
+  const filterentries = entries.notes.filter((entry) => entry.id === data);
+  const [dataLocal, setData] = useState(() => {
+    const saved = localStorage.getItem("data");
+    const initialValue = JSON.parse(saved);
+    return initialValue || "";
+  });
+  console.log(filterentries);
 
   useEffect(() => {
     setId(IdValue);

@@ -4,11 +4,11 @@ import { useNavigate } from "react-router-dom";
 
 const EntryCard = ({ data, handleValueEdit }) => {
   const navigate = useNavigate();
+  console.log(data);
 
   const handleClick = () => {
     navigate("/reading", { replace: false });
     handleValueEdit(data.id);
-    localStorage.clear();
   };
   return (
     <div className="entrie-card" onClick={handleClick}>
