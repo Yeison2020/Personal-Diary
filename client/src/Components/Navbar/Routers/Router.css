@@ -73,3 +73,11 @@
 .name-site {
   cursor: pointer;
 }
+
+.adding-back {
+  background: url("https://i.pinimg.com/originals/e2/9d/92/e29d92b5d7cce1a0ea9e0974268c2411.jpg")
+    center no-repeat;
+  background-size: cover;
+  position: relative;
+  height: 100vh;
+}

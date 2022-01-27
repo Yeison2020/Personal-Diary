@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./textEntry.css";
 import SideBar from "../SideBar/SideBar";
@@ -7,9 +7,12 @@ const TextEntry = ({ data }) => {
   const [entries, setEntries] = useState([]);
   const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
-  const dateRef = useRef("");
-  const titleRef = useRef("");
-  const textAreaRef = useRef("");
+
+  const [formData, setFormData] = useState({
+    title: "",
+    date: "",
+    diary: "",
+  });
 
   useEffect(() => {
     fetch("entries")
@@ -21,25 +24,18 @@ const TextEntry = ({ data }) => {
   // const filterData = entries.notes.filter((entry) => entry.id === data);
 
   // console.log(filterData);
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleSave = (e) => {
     e.preventDefault();
-    const refs = {
-      date: dateRef.current.value,
-      title: titleRef.current.value,
-      textArea: textAreaRef.current.value,
-    };
-
     fetch("notes", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        title: refs.title,
-        date: refs.date,
-        diary: refs.textArea,
-      }),
+      body: JSON.stringify(formData),
     }).then((r) => {
       if (r.ok) {
         navigate("/", { replace: true });
@@ -47,8 +43,10 @@ const TextEntry = ({ data }) => {
         r.json().then((err) => setErrors(err.errors));
       }
     });
+
     const elemento = document.getElementById("paper");
     elemento.reset();
+    window.location.reload();
   };
   return (
     <>
@@ -59,20 +57,37 @@ const TextEntry = ({ data }) => {
             <div className="text-style">
               {" "}
               Title:{" "}
-              <input id="title" type="text" name="title" ref={titleRef} />
+              <input
+                id="title"
+                type="text"
+                name="title"
+                required
+                value={formData.title}
+                onChange={handleChange}
+              />
             </div>
 
             <div className="text-style">
               {" "}
-              Date: <input id="title" type="date" name="date" ref={dateRef} />
+              Date:{" "}
+              <input
+                id="title"
+                type="date"
+                name="date"
+                value={formData.date}
+                onChange={handleChange}
+                required
+              />
             </div>
           </div>
           <textarea
-            ref={textAreaRef}
+            onChange={handleChange}
+            value={formData.diary}
             placeholder="Enter something funny."
             id="text"
-            name="text"
+            name="diary"
             rows="4"
+            required
             style={{
               overflow: "hidden",
               height: "600px",

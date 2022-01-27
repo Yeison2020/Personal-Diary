@@ -48,7 +48,7 @@ const DisplayText = ({ data, entries }) => {
     handleChange(e);
     console.log(formData);
 
-    fetch(`replace/${id}`, {
+    fetch(`replace/${dataStore}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

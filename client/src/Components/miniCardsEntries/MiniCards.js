@@ -8,10 +8,11 @@ const miniCards = ({ data }) => {
     })
       .then((resp) => resp.json())
       .then((data) => console.log(data));
+    window.location.reload();
   };
   console.log(data);
   return (
-    <div>
+    <div className="hover-card">
       <div className="container-mini-cards animate__animated animate__swing">
         <p className="name-cards">{data.title}</p>
         <p className="date-cards">{data.date}</p>

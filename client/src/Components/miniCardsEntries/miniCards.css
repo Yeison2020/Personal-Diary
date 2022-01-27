@@ -8,24 +8,61 @@
 }
 
 .container-mini-cards {
-  background-color: #aefeff;
+  align-content: flex-start;
   margin: 3px;
   height: 60px;
   font-size: 15px;
-  font-family: "Neonderthaw", cursive;
-  font-family: "Nunito", sans-serif;
+
+  border-radius: 15px;
+
+  font-family: "Mochiy Pop P One", sans-serif;
+  font-weight: bold;
+
+  color: #fff;
+  text-shadow: 0px -1px 0px #000000;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  border-top: 1px solid #fff;
+  -webkit-box-shadow: 0px 2px 14px #000;
+  box-shadow: 0px 2px 14px #000;
+  background-color: #62add6;
+  background-image: url(https://static.tumblr.com/maopbtg/ZHLmgtok7/button.png);
+  background-repeat: repeat-x;
+}
+
+.hover-card:hover {
+  transform: scale(1.02);
+  opacity: 1;
 }
 
 .name-cards {
+  font-family: "Mochiy Pop P One", sans-serif;
   margin-right: 30px;
 }
 
 .date-cards {
+  font-family: "Mochiy Pop P One", sans-serif;
   margin-left: 30px;
 }
 
 .delete-btn {
+  cursor: pointer;
+  color: #fff;
+  outline: none;
+  border: none;
+  font-weight: 900;
+  border-radius: 0.2vw;
   padding: 10px;
-  background-color: red;
+  margin-right: 0.7rem;
+  margin-left: 0.7rem;
+  padding-top: 0.5rem;
+  background-color: rgba(51, 51, 51, 0.5);
+  padding-bottom: 0.5rem;
   border-radius: 10px;
+}
+
+.delete-btn:hover {
+  color: #000;
+  background-color: #f38ba0;
+  transition: all 0.2s;
 }

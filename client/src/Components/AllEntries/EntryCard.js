@@ -8,13 +8,14 @@ const EntryCard = ({ data, handleValueEdit }) => {
   const handleClick = () => {
     navigate("/reading", { replace: false });
     handleValueEdit(data.id);
+    localStorage.clear();
   };
   return (
     <div className="entrie-card" onClick={handleClick}>
       <p onClick={handleClick} className="title-btn">
         {data.title}
       </p>
-      <p>{data.date}</p>
+      <p className="title-btn">{data.date}</p>
     </div>
   );
 };

@@ -75,15 +75,23 @@
   background-image: url(https://static.tumblr.com/maopbtg/ZHLmgtok7/button.png);
   background-repeat: repeat-x;
 }
+
 #button:active {
   zoom: 1;
   filter: alpha(opacity=80);
   opacity: 0.8;
 }
 #button:focus {
+  transform: scale(1.02);
+  opacity: 1;
   zoom: 1;
   filter: alpha(opacity=80);
   opacity: 0.8;
+}
+
+#button:hover {
+  transform: scale(1.02);
+  opacity: 1;
 }
 #wrapper {
   width: 300px;

@@ -13,11 +13,11 @@ import Reading from "../../Reading/Reading";
 const Router = () => {
   const [value, setValue] = useState(1);
   const navigate = useNavigate();
+
   const handleValueEdit = (current) => {
     navigate("reading", { replace: true });
     console.log(current);
     setValue(current);
-    return current;
   };
 
   const [user, setUser] = useState(null);

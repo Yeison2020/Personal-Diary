@@ -8,7 +8,7 @@ const HomePage = () => {
     navigate("/signup", { replace: true });
   };
   return (
-    <div>
+    <div className="adding-back">
       <div className="title-App">
         <h1 className="animate__animated  animate__bounceInDown">
           My book of life
