@@ -11,7 +11,7 @@ const HomePage = () => {
     <div className="adding-back">
       <div className="title-App">
         <h1 className="animate__animated  animate__bounceInDown">
-          My book of life
+          Personal Diary
         </h1>
         <p>Your privacy is Here</p>
       </div>

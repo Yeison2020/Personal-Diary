@@ -58,7 +58,7 @@ const Navbar = ({ user, setUser }) => {
     return (
       <div className="nav-principal" id="color-user">
         <h2 className="name-site" onClick={handleHome}>
-          My book of life
+          Personal Diary
         </h2>
         <img
           className="logo-user"
