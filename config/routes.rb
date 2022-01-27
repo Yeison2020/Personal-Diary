@@ -22,6 +22,9 @@ get 'entries', to: 'notes#all_notes_current_user'
 patch '/replace/:id', to: 'notes#update_note'
 
 
+delete 'delete/:id', to: 'notes#destroy'
+
+
 
 
 # USER ROUTES TO EDIT USER DATA

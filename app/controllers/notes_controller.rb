@@ -32,6 +32,19 @@ class NotesController < ApplicationController
     end
 
 
+    def destroy
+        delete_notes = current_user.notes.find_by(id: params[:id])
+        if delete_notes
+            delete_notes.destroy
+            head :no_content 
+        else   
+            render json: {error: 'Notes could not be found Try again Later'}
+        end
+
+
+    end
+
+
 
 
     private 
